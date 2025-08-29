@@ -23,7 +23,15 @@
         formatter = pkgs.alejandra;
 
         devShells.default = pkgs.mkShell {
-          packages = [erlang pkgs.nil pkgs.beam27Packages.erlang-ls pkgs.emacs30-pgtk pkgs.inetutils pkgs.agda pkgs.ccls];
+          packages = with pkgs;
+            [erlang
+             nil
+             beam27Packages.erlang-ls
+             emacs30-pgtk
+             inetutils
+             agda
+             ccls
+             coreutils-prefixed];
 
           LOCALE_ARCHIVE = optionalString isLinux "${glibcLocales}/lib/locale/locale-archive";
           LANG = "en_US.UTF-8";
